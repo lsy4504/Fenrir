@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.forcewave.jiga.dao.IJigaDao">
+	<select id="jigaList" parameterType="String" resultType="hashMap">
+		select *
+		from stats_emd_${start}_${end}
+	</select>
+	<select id="jigaGrapData" parameterType="map" resultType="hashMap">
+		select * 
+		from stats_emd_${start}_${end}
+		where 
+		<foreach collection="emdList" item="emd_nm" open="(" close=")" separator="or">
+			emd_nm=#{emd_nm}		
+		</foreach> 
+	</select>
+	<select id="analGetData" parameterType="String" resultType="hashMap">
+		select *
+		from stats_emd_${start}_${end} a inner join stats_ingu_${start}_${end} b on(a.emd_nm=b.emd_nm)
+	</select>
+	<select id="analSelData" parameterType="map" resultType="hashMap">
+		select * 
+		from stats_emd_${start}_${end} a inner join stats_ingu_${start}_${end} b on(a.emd_nm=b.emd_nm)
+		where 
+		<foreach collection="emdList" item="emd_nm" open="(" close=")" separator="or">
+			a.emd_nm=#{emd_nm}		
+		</foreach> 
+	</select>
+</mapper>

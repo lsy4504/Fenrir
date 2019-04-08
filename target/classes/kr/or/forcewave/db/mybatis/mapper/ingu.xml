@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.forcewave.ingu.dao.IIinguDao">
+	<select id="inguList" parameterType="String" resultType="hashMap">
+		select *
+		from stats_ingu_${start}_${end}
+	</select>
+	<select id="inguGrapData" parameterType="map" resultType="hashMap">
+		select * 
+		from stats_ingu_${start}_${end}
+		where 
+		<foreach collection="emdList" item="emd_nm" open="(" close=")" separator="or">
+			emd_nm=#{emd_nm}		
+		</foreach> 
+	</select>
+</mapper>

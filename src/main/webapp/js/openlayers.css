@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+
+.ol-zoom, .ol-zoomslider, .ol-scale-line{
+	left:inherit;
+	right:40px;
+}
+
+.map-tooltip-measure{
+	border: dotted 1px #ffcc33;
+    border-radius: 8px;
+    background-color: rgba(100,100,100,0.8);
+    color: #fff;
+    padding: 5px;
+}
+
+.geowave_progress_contatiner{
+	 position: absolute;
+     bottom: 0;
+     left: 0;
+     margin-bottom:0px !important;
+     width:100%;
+	 display:none;
+     z-index:1;
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.forcewave.maker.dao.IMakerDao">
+	<insert id="insertMaker" parameterType="list">
+		insert into maker(id,content,geom)
+		values
+		<foreach collection="list" item="maker" separator=",">
+			(#{maker.id},#{maker.content},ST_Point(${maker.geom[0]},${maker.geom[1]}))
+		</foreach>
+	</insert>
+	<delete id="deleteMaker" parameterType="String">
+		delete from maker where id=#{id} and content=#{content}
+	</delete>
+
+</mapper>
